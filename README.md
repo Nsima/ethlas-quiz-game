@@ -1,9 +1,9 @@
 # On Chain Crypto Quiz Game
-This repo will support the tutorial for building a crypto quiz game. 
+
 ---
 The game stores quiz questions on the blockchain and their answers. The answers are hashed via `keccak256`, so you can verify the answer without giving it away. `Keccak256` is a one-way cryptographic hash function, and it cannot be decoded in reverse. This means the way to check if the answer is correct will be to provide a guess and hash it. If both hashes match, your answer is correct.
 
-This tutorial will use:
+Technology used:
 * [Solidity](https://docs.soliditylang.org/)
 * [Goerli](https://goerli.net/)
 * [Foundry](https://github.com/foundry-rs/foundry)
