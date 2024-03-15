@@ -1,53 +1,72 @@
-# On Chain Crypto Quiz Game
+# **Technical Interview **
 
----
-The game stores quiz questions on the blockchain and their answers. The answers are hashed via `keccak256`, so you can verify the answer without giving it away. `Keccak256` is a one-way cryptographic hash function, and it cannot be decoded in reverse. This means the way to check if the answer is correct will be to provide a guess and hash it. If both hashes match, your answer is correct.
+<img alt="Solidity" src="https://img.shields.io/badge/Solidity-e6e6e6?style=for-the-badge&logo=solidity&logoColor=black"> <img alt="Typescipt" src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white">
 
-Technology used:
-* [Solidity](https://docs.soliditylang.org/)
-* [Goerli](https://goerli.net/)
-* [Foundry](https://github.com/foundry-rs/foundry)
-* [SvelteKit](https://kit.svelte.dev/)
+This repo contains a simple Smart Contract for depositing and withdrawing tokens.
 
+## **Prerequisites**
 
----
-## Deploying the contract
+-   git
+-   npm
+-   hardhat
 
-Use `deploy.sh` to deploy the contract, follow the prompts, the name of the contract to deploy is `GameFactory`
-```bash
-❯ quiz-game (main) ✘ cd foundry
-❯ foundry (main) ✘ ./deploy.sh
+## **Getting started**
+1.  Clone the repository
+
+```sh
+git clone --branch <branch_name> https://github.com/tech-interview/tech-interview.git
 ```
 
----
-## Running the front end
+2.  Navigate to `tech-interview` directory
 
-Replace `<YOUR_CONTRACT_HERE>` in `svelte/src/routes/index.svelte` with the address of the contract you just deployed.
+```sh
+cd tech-interview
+```
 
-```bash
-❯ quiz-game (main) ✘ cd svelte
-❯ svelte (main) ✘ npm install
+3.  Install dependencies
 
-> svelte@0.0.1 prepare
-> svelte-kit sync
+```sh
+npm install
+```
+
+4.  Configure project (Will add later when deploying to testnet)
+
+```sh
+cp .env.example .env
+```
+
+## **Compile Smart Contracts**
+
+To compile every smart contract run the following command in your terminal:
+
+```sh
+npx hardhat compile
+```
 
 
-up to date, audited 277 packages in 936ms
 
-53 packages are looking for funding
-  run `npm fund` for details
+## **Run tests**
 
-found 0 vulnerabilities
-❯ svelte (main) ✘ npm run dev -- --open
+To run the tests in the test folder run the following command in your terminal:
 
-> svelte@0.0.1 dev
-> svelte-kit dev "--open"
+Note: Running tests automatically compiles any smart contracts
+
+-   To run all tests
+```sh
+npx hardhat test
+```
 
 
-  SvelteKit v1.0.0-next.347
+## **Deploy to Blockchain Network** (Sepolia)
 
-  local:   http://localhost:3000
-  network: not exposed
+-   To a specific testnet
 
-  Use --host to expose server to other devices on this network
+```sh
+yarn hardhat --network <network-name-in-tsconfig> deploy -- tags <deploy-script-tags>
+```
+
+-   To local development network (to test deployment)
+
+```sh
+yarn hardhat deploy -- tags <deploy-script-tags>
 ```
